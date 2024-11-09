@@ -58,12 +58,15 @@ router.get('/', pokemonsGet);
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               nombre:
  *                 type: string
  *                 example: Pikachu
- *               type:
+ *               tipo:
  *                 type: string
  *                 example: Electric
+ *               imgurl:
+ *                 type: string
+ *                 example: https://domininio/recurso.jpg 
  *     responses:
  *       201:
  *         description: Pokémon creado exitosamente
@@ -94,12 +97,15 @@ router.post('/', pokemonsPost);
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               nombre:
  *                 type: string
  *                 example: Pikachu
- *               type:
+ *               tipo:
  *                 type: string
  *                 example: Electric
+ *               imgurl:
+ *                 type: string
+ *                 example: https://domininio/recurso.jpg 
  *     responses:
  *       200:
  *         description: Pokémon actualizado exitosamente
@@ -116,7 +122,7 @@ router.put('/:id', pokemonsPut);
  * @swagger
  * /api/pokemons/{id}:
  *   patch:
- *     summary: Actualiza parcialmente un pokémon
+ *     summary: Actualiza url de imagen de un pokémon
  *     tags: [Pokémon]
  *     parameters:
  *       - in: path
@@ -132,12 +138,9 @@ router.put('/:id', pokemonsPut);
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               imgurl:
  *                 type: string
- *                 example: Pikachu
- *               type:
- *                 type: string
- *                 example: Electric
+ *                 example: https://dominio/pokemon.jpg
  *     responses:
  *       200:
  *         description: Pokémon actualizado parcialmente
