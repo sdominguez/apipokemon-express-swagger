@@ -2,21 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const swaggerJsdoc = require('swagger-jsdoc'); 
 const swaggerUi = require('swagger-ui-express');
-const swaggerOptions = { 
-    swaggerDefinition: { 
-        openapi: '3.0.0', 
-        info: { 
-            title: 'API Pokemons', 
-            version: '1.0.0', 
-            description: 'Documentación de mi API de pokemones', }, 
-            servers: [ 
-                { url: 'http://localhost:8081', }, 
-            ], 
-        }, 
-        apis: ['./routes/*.js'], 
-    };
+const swaggerSpec = require('../swagger');
 
-const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
 class Server{
 
@@ -34,7 +21,7 @@ class Server{
 
     routes(){
         this.app.use('/api/pokemons', require('../routes/pokemons'));
-        this.app.use('/api/pokemons/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+        this.app.use('/api/pokemons/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
     }
 
     listen(){
